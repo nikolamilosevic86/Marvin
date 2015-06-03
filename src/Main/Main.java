@@ -13,6 +13,7 @@ public class Main {
 		text = args[0];
 		System.out.println(text);
 		Wordnet wn = new Wordnet();
+		
 
 	}
 
