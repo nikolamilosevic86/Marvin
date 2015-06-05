@@ -3,9 +3,9 @@ package Main;
 import java.util.LinkedList;
 
 public class Word {
-	public LinkedList<WordOutputElement> wordmeanings = new LinkedList<WordOutputElement>();
+	public LinkedList<WordMeaningOutputElement> wordmeanings = new LinkedList<WordMeaningOutputElement>();
 	public String word;
-	public int starting_char;
-	public int ending_char;
+	public int starting;
+	public int ending;
 
 }

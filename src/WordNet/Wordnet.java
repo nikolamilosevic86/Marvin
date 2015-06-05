@@ -3,7 +3,7 @@ package WordNet;
 import java.io.FileInputStream;
 import java.util.LinkedList;
 
-import Main.WordOutputElement;
+import Main.WordMeaningOutputElement;
 import net.didion.jwnl.JWNL;
 import net.didion.jwnl.data.IndexWord;
 import net.didion.jwnl.data.POS;
@@ -26,16 +26,18 @@ public class Wordnet {
 		}
 	}
 	
-	public LinkedList<WordOutputElement> getSencesFromWordnet(String word,int start, int end)
+	public LinkedList<WordMeaningOutputElement> getSencesFromWordnet(String word,int start, int end)
 	{
 		
-		LinkedList<WordOutputElement> sences = new LinkedList<WordOutputElement>();
+		LinkedList<WordMeaningOutputElement> sences = new LinkedList<WordMeaningOutputElement>();
 		try{
 		IndexWord Iword = null;
 		Iword = dict.lookupIndexWord(POS.NOUN,word);
+		if(Iword==null)
+			return sences;
 		Synset[] senses = Iword.getSenses();
 		for (int i=0; i<senses.length; i++) {
-			WordOutputElement o = new WordOutputElement();
+			WordMeaningOutputElement o = new WordMeaningOutputElement();
 			System.out.println(senses[i]);
 			o.Description = senses[i].getGloss();
 			o.appearingWord = word;
@@ -44,6 +46,7 @@ public class Wordnet {
 			o.startAt = start;
 			o.endAt = end;
 			o.URL = "http://wordnetweb.princeton.edu/perl/webwn?s="+senses[i].getWord(0).getLemma();
+			sences.add(o);
 			
 		}
 		}catch(Exception ex)

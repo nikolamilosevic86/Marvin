@@ -1,6 +1,6 @@
 package Main;
 
-public class WordOutputElement {
+public class WordMeaningOutputElement {
 	public String appearingWord;
 	public String Description;
 	public String Source;
