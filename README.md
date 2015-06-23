@@ -18,6 +18,8 @@ In order to run Marvin semantic annotator you can type in command line
 
 ```java -jar Marvin.jar "Sentence to be semantically annotated."```
 
+##Running Marvin as a library
+
 ##Methodology
 
 ##Roadmap
