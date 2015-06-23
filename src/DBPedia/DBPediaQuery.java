@@ -46,7 +46,6 @@ public class DBPediaQuery {
 	        ResultSet results = ResultSetFactory.copyResults( exec.execSelect() );
 
 	        while ( results.hasNext() ) {
-	            // As RobV pointed out, don't use the `?` in the variable
 	            // name here. Use *just* the name of the variable.
 	        	QuerySolution sol = (QuerySolution) results.next();
 	        	WordMeaningOutputElement o = new WordMeaningOutputElement();
