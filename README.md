@@ -8,13 +8,15 @@ Marvin semantic text annotatior is a java program that can be also used as a jav
 
 After the installation it is necessary to configure Wordnet path in file_properties.xml file. Tag that currently states following:
 
-<param name="dictionary_path" value="C:\Program Files (x86)\WordNet\2.1\dict"/>
+```<param name="dictionary_path" value="C:\Program Files (x86)\WordNet\2.1\dict"/>```
 
 has to be changed with the correct path within the machine where Wordnet is installed. There are no other requirements for the installation.
 
 ##Running Marvin semantic text annotator
 
-In order to run Marvin semantic annotator you can type in command line java -jar Marvin.jar "Sentence to be semantically annotated."
+In order to run Marvin semantic annotator you can type in command line 
+
+```java -jar Marvin.jar "Sentence to be semantically annotated."```
 
 ##Methodology
 
