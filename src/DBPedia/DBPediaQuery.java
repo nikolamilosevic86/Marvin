@@ -75,7 +75,6 @@ public class DBPediaQuery {
 				+ "prefix dbpprop: <http://dbpedia.org/property/>\n"
 				+ "prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n"
 				+
-
 				"SELECT DISTINCT * \n" + "WHERE { \n"
 				+ " ?resource  rdfs:label ?label ;\n"
 				+ " dbpedia-owl:abstract ?abstract .\n"
@@ -86,12 +85,9 @@ public class DBPediaQuery {
 		exec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql",
 				qs.asQuery());
 
-		// Normally you'd just do results = exec.execSelect(), but I want to
-		// use this ResultSet twice, so I'm making a copy of it.
 		results = ResultSetFactory.copyResults(exec.execSelect());
 
 		while (results.hasNext()) {
-			// As RobV pointed out, don't use the `?` in the variable
 			// name here. Use *just* the name of the variable.
 			QuerySolution sol = (QuerySolution) results.next();
 			WordMeaningOutputElement o = new WordMeaningOutputElement();
@@ -113,9 +109,6 @@ public class DBPediaQuery {
 			}
 
 		}
-
-		// ResultSetFormatter.out( results );
-
 		return elements;
 	}
 
@@ -126,7 +119,6 @@ public class DBPediaQuery {
 				+ "prefix dbpprop: <http://dbpedia.org/property/>\n"
 				+ "prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n"
 				+
-
 				"SELECT DISTINCT * \n" + "WHERE { \n"
 				+ " ?resource  rdfs:label ?label ;\n"
 				+ " dbpedia-owl:abstract ?abstract .\n"
@@ -139,22 +131,14 @@ public class DBPediaQuery {
 
 		QueryExecution exec = QueryExecutionFactory.sparqlService(
 				"http://dbpedia.org/sparql", qs.asQuery());
-
-		// Normally you'd just do results = exec.execSelect(), but I want to
-		// use this ResultSet twice, so I'm making a copy of it.
 		ResultSet results = ResultSetFactory.copyResults(exec.execSelect());
 
 		while (results.hasNext()) {
-			// As RobV pointed out, don't use the `?` in the variable
-			// name here. Use *just* the name of the variable.
 			QuerySolution sol = (QuerySolution) results.next();
 			RDFNode node = sol.get("resource");
-
 			System.out.println(sol.get("?abstract"));
-
 			System.out.println(node);
 		}
-
 		// A simpler way of printing the results.
 		ResultSetFormatter.out(results);
 	}
