@@ -26,13 +26,20 @@ public class Wordnet {
 		}
 	}
 	
-	public LinkedList<WordMeaningOutputElement> getSencesFromWordnet(String word,int start, int end)
+	public LinkedList<WordMeaningOutputElement> getSencesFromWordnet(String word,String tag, int start, int end)
 	{
 		
 		LinkedList<WordMeaningOutputElement> sences = new LinkedList<WordMeaningOutputElement>();
 		try{
 		IndexWord Iword = null;
-		Iword = dict.lookupIndexWord(POS.NOUN,word);
+		if(tag.equals("NN")||tag.equals("NNP")||tag.equals("NNS")||tag.equals("NNPS"))
+			Iword = dict.lookupIndexWord(POS.NOUN,word);
+		else if(tag.equals("VB")||tag.equals("MD")||tag.equals("VBZ")||tag.equals("VBD")||tag.equals("VBG")||tag.equals("VBN")||tag.equals("VBP")||tag.equals("VBZ"))
+			Iword = dict.lookupIndexWord(POS.VERB,word);
+		else if(tag.equals("JJ")||tag.equals("JJR")||tag.equals("JJS"))
+			Iword = dict.lookupIndexWord(POS.ADJECTIVE,word);
+		else if(tag.equals("RB")||tag.equals("RBR")||tag.equals("RBS"))
+			Iword = dict.lookupIndexWord(POS.ADVERB,word);
 		if(Iword==null)
 			return sences;
 		Synset[] senses = Iword.getSenses();
