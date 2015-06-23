@@ -8,6 +8,7 @@ import opennlp.tools.tokenize.Tokenizer;
 import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
 import opennlp.tools.util.Span;
+import DBPedia.DBPediaQuery;
 import WordNet.Wordnet;
 
 public class Main {
@@ -20,6 +21,7 @@ public class Main {
 		text = args[0];
 		System.out.println(text);
 		Wordnet wn = new Wordnet();
+		DBPediaQuery db = new DBPediaQuery();
 		InputStream is;
 		try {
 			is = new FileInputStream("en-token.bin");
@@ -34,6 +36,10 @@ public class Main {
 				w.ending = tokens2[i].getEnd();
 				w.word = tokens[i];
 				w.wordmeanings.addAll(wn.getSencesFromWordnet(w.word, w.starting, w.ending));
+				w.wordmeanings.addAll(db.queryDBPedia(w.word, w.starting, w.ending));
+				if(i+1<tokens.length){
+				w.wordmeanings.addAll(db.queryDBPedia(w.word + " "+tokens[i+1], w.starting, tokens2[i+1].getEnd()));
+				}
 				words.add(w);
 			}
 			
@@ -42,7 +48,7 @@ public class Main {
 				System.out.println("Word: "+words.get(i).word);
 				System.out.println("Meaninigs:");
 				for(int j = 0;j<words.get(i).wordmeanings.size();j++){
-					System.out.println("Meaninig: "+words.get(i).wordmeanings.get(j).Description);
+					System.out.println("Meaninig ("+words.get(i).wordmeanings.get(j).Source+"): "+words.get(i).wordmeanings.get(j).Description);
 				}
 			}
 			
