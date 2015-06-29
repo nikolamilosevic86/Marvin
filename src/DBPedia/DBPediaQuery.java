@@ -23,7 +23,7 @@ public class DBPediaQuery {
 			int start, int end) {
 		LinkedList<WordMeaningOutputElement> elements = new LinkedList<WordMeaningOutputElement>();
 		word = WordUtils.capitalize(word);
-
+		try{
 		ParameterizedSparqlString qs = new ParameterizedSparqlString(""
 				+ "prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#>\n"
 				+ "prefix dbpedia-owl: <http://dbpedia.org/ontology/>\n"
@@ -67,9 +67,14 @@ public class DBPediaQuery {
 			}
 
 		}
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		try{
 		word = word.toLowerCase();
 		word = word.substring(0, 1).toUpperCase() + word.substring(1);
-		qs = new ParameterizedSparqlString(""
+		ParameterizedSparqlString qs = new ParameterizedSparqlString(""
 				+ "prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#>\n"
 				+ "prefix dbpedia-owl: <http://dbpedia.org/ontology/>\n"
 				+ "prefix dbpprop: <http://dbpedia.org/property/>\n"
@@ -80,12 +85,12 @@ public class DBPediaQuery {
 				+ " dbpedia-owl:abstract ?abstract .\n"
 				+ "FILTER ( lang(?abstract) = 'en' ) \n" + "}");
 
-		wordLiteral = ResourceFactory.createLangLiteral(word, "en");
+		Literal wordLiteral = ResourceFactory.createLangLiteral(word, "en");
 		qs.setParam("label", wordLiteral);
-		exec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql",
+		QueryExecution exec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql",
 				qs.asQuery());
 
-		results = ResultSetFactory.copyResults(exec.execSelect());
+		ResultSet results = ResultSetFactory.copyResults(exec.execSelect());
 
 		while (results.hasNext()) {
 			// name here. Use *just* the name of the variable.
@@ -108,6 +113,10 @@ public class DBPediaQuery {
 				elements.add(o);
 			}
 
+		}
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
 		}
 		return elements;
 	}
