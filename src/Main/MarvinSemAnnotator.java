@@ -16,7 +16,7 @@ import WordNet.Wordnet;
 /**
  * The Class Annotator. For use as a library use its method annotate(string)
  */
-public class Annotator {
+public class MarvinSemAnnotator {
 	
 	/** The tokenizer. */
 	private Tokenizer tokenizer;
@@ -39,7 +39,7 @@ public class Annotator {
 	/**
 	 * Instantiates a new annotator.
 	 */
-	public Annotator()
+	public MarvinSemAnnotator()
 	{
 		try {
 			InputStream modelIn = null;
