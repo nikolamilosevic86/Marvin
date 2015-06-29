@@ -79,6 +79,72 @@ public class MarvinSemAnnotator {
 				w.word = tokens[i];
 				w.wordmeanings.addAll(wn.getSencesFromWordnet(w.word, tags[i],
 						w.starting, w.ending));
+				
+				//TODO: ADD DBPedia as local instance
+				w.wordmeanings.addAll(db.queryDBPedia(w.word, w.starting,
+						w.ending));
+				if (i + 1 < tokens.length) {
+					w.wordmeanings.addAll(db.queryDBPedia(w.word + " "
+							+ tokens[i + 1], w.starting,
+							tokens2[i + 1].getEnd()));
+				}
+				words.add(w);
+			}
+			return words;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+		
+	}
+	
+	public LinkedList<Word> annotateWordNetOnly(String text)
+	{
+		try{
+			words = new LinkedList<Word>();
+			String[] tokens = tokenizer.tokenize(text);
+			Span[] tokens2 = tokenizer.tokenizePos(text);
+			String[] tags = _posTagger.tag(tokens);
+			for (int i = 0; i < tokens.length; i++) {
+				Word w = new Word();
+				w.starting = tokens2[i].getStart();
+				w.ending = tokens2[i].getEnd();
+				w.word = tokens[i];
+				w.wordmeanings.addAll(wn.getSencesFromWordnet(w.word, tags[i],
+						w.starting, w.ending));
+				
+				//TODO: ADD DBPedia as local instance
+//				w.wordmeanings.addAll(db.queryDBPedia(w.word, w.starting,
+//						w.ending));
+//				if (i + 1 < tokens.length) {
+//					w.wordmeanings.addAll(db.queryDBPedia(w.word + " "
+//							+ tokens[i + 1], w.starting,
+//							tokens2[i + 1].getEnd()));
+//				}
+				words.add(w);
+			}
+			return words;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+		
+	}
+	
+	public LinkedList<Word> annotateDBPediaOnly(String text)
+	{
+		try{
+			words = new LinkedList<Word>();
+			String[] tokens = tokenizer.tokenize(text);
+			Span[] tokens2 = tokenizer.tokenizePos(text);
+			String[] tags = _posTagger.tag(tokens);
+			for (int i = 0; i < tokens.length; i++) {
+				Word w = new Word();
+				w.starting = tokens2[i].getStart();
+				w.ending = tokens2[i].getEnd();
+				w.word = tokens[i];
+				
+				//TODO: ADD DBPedia as local instance
 				w.wordmeanings.addAll(db.queryDBPedia(w.word, w.starting,
 						w.ending));
 				if (i + 1 < tokens.length) {
