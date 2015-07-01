@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<meta name="description" content="Marvin is a semantic text annotation tool that uses various external sources to annotate imputed text (Wordnet, DBPedia). Marvin text annotator can be also used as standalone tool or as a java library">
-    <meta name="keywords" content="Marvin, Text annotation, text mining, data mining, NLP, natural language processing, linked data, semantic web">
+	<meta name="description" content="Marvin is a semantic text annotation tool that uses various external sources to annotate imputed text (Wordnet, DBPedia, MetaMap). Marvin text annotator can be also used as standalone tool or as a java library">
+    <meta name="keywords" content="Marvin, Text annotation, text mining, data mining, NLP, natural language processing, linked data, semantic web, metamap, dbpedia, wordnet">
 	<meta name="author" content="Nikola Milosevic">
 	<!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -34,7 +34,7 @@
         <h1>
 <a id="welcome-to-marvin---semantic-text-annotator" class="anchor" href="#welcome-to-marvin---semantic-text-annotator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to Marvin - Semantic text annotator</h1>
 
-<p>Marvin is a semantic text annotation tool that uses various external sources to annotate imputed text. Marvin text annotator can be also used as a java library. Marvin currently supports tagging using Wordnet and DBPedia (linked data version of Wikipedia). So our small Marvin semantic annotator already has a lot of knowledge, which will make anyone probably depressed and therefore we gave him a name with reference to Hitchhikers guide to the Galaxy depressed robot. 
+<p>Marvin is a semantic text annotation tool that uses various external sources to annotate imputed text. Marvin text annotator can be also used as a java library. Marvin currently supports tagging using Wordnet,Metamap (UMLS tagging, useful in biomedicine) and DBPedia (linked data version of Wikipedia). So our small Marvin semantic annotator already has a lot of knowledge, which will make anyone probably depressed and therefore we gave him a name with reference to Hitchhikers guide to the Galaxy depressed robot. 
 <img src="http://lawrencerspencer.com/wp-content/uploads/2012/02/MARVIN-THE-ROBOT.jpg" alt="Marvin, semantic text annotator"></p>
 
 <h2>
@@ -46,9 +46,10 @@
 
 <pre><code>&lt;param name="dictionary_path" value="C:\Program Files (x86)\WordNet\2.1\dict"/&gt;
 </code></pre>
-
 <p>has to be changed with the correct path within the machine where Wordnet is installed. There are no other requirements for the installation.</p>
+<p>Also, it is necessary to modify settings,cfg file, where you can configure which external resources you would like to use (DBPedia, MetaMap or WordNet) and where they are (DBPedia SPQRQL Interface and MetaMap host and port).
 
+<p>It is higly advisable to use your own (local) installation of DBPedia, WordNet and MetaMap. Public installation usually have certain limit, which could cause problems during the tagging process</p>
 <h2>
 <a id="running-marvin-semantic-text-annotator" class="anchor" href="#running-marvin-semantic-text-annotator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running Marvin semantic text annotator</h2>
 
@@ -65,8 +66,17 @@
 
 <p>In order to run Marvin semantic text annotator as a library, you need to also to install WordNet on a used machine and then include the Marvin.jar file into your Java project. </p>
 
-<p>The library contains methods that would query DBPedia and Wordnet and both method return a LinkedList of objects called WordMeaningOutputElement</p>
+<p>The library contains methods that would query DBPedia and Wordnet and both method return a LinkedList of objects called Word</p>
+<pre><code>
+	public class Word {
+	public LinkedList<WordMeaningOutputElement> wordmeanings = new LinkedList<WordMeaningOutputElement>();
+	public String word;
+	public int starting;
+	public int ending;
 
+}
+</code></pre>
+<p>Word class contains a list of WordMeaningOutputElement, which definition is:</p>
 <pre><code>public class WordMeaningOutputElement {
     public String appearingWord; // what is the word in text
     public String Description; //Definition in Wordnet or abstract from DBPedia
@@ -84,7 +94,6 @@
 <p>Roadmap of project includes addition of new external sources for semantic tagging. Currently the idea is to include the following:</p>
 
 <ul>
-<li>Metamap (UMLS tagging, useful in biomedicine)</li>
 <li>Unit ontology</li>
 <li>Possibly other ontologies</li>
 </ul>
