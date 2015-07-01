@@ -57,7 +57,7 @@ public class MetaMap {
 		 * set parameters (set parameters in conf/metamap.properties)
 		 */
 		api = new MetaMapApiImpl();
-		api.setHost("localhost");// "gnode1.mib.man.ac.uk");
+		api.setHost("localhost");// "gnode1.mib.man.ac.uk"); 
 		api.setPort(8066);
 		List<String> theOptions = new ArrayList<String>();
 		theOptions.add("-y"); // turn on Word Sense Disambiguation
