@@ -12,6 +12,7 @@ import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
 import opennlp.tools.util.Span;
 import DBPedia.DBPediaQuery;
+import MetaMap.MetaMap;
 import WordNet.Wordnet;
 
 public class Main {
@@ -24,6 +25,7 @@ public class Main {
 		text = args[0];
 		System.out.println(text);
 		Wordnet wn = new Wordnet();
+		MetaMap mm= new MetaMap();
 		DBPediaQuery db = new DBPediaQuery();
 		InputStream is;
 		try {
@@ -57,7 +59,8 @@ public class Main {
 				}
 				words.add(w);
 			}
-
+			
+			mm.getMetaMapMeanings(text);
 			for (int i = 0; i < words.size(); i++) {
 				System.out.println("Word: " + words.get(i).word);
 				System.out.println("Meaninigs:");

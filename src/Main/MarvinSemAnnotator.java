@@ -11,6 +11,7 @@ import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
 import opennlp.tools.util.Span;
 import DBPedia.DBPediaQuery;
+import MetaMap.MetaMap;
 import WordNet.Wordnet;
 
 /**
@@ -35,6 +36,7 @@ public class MarvinSemAnnotator {
 	
 	/** The _pos tagger. */
 	POSTaggerME _posTagger = null;
+	MetaMap mms;
 	
 	/**
 	 * Instantiates a new annotator.
@@ -51,6 +53,32 @@ public class MarvinSemAnnotator {
 			is = new FileInputStream("en-token.bin");
 			TokenizerModel model = new TokenizerModel(is);
 			tokenizer = new TokenizerME(model);
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Instantiates a new annotator.
+	 */
+	public MarvinSemAnnotator(String mm)
+	{
+		try {
+			InputStream modelIn = null;
+			// Loading tokenizer model
+			modelIn = new FileInputStream("en-pos-maxent.bin");
+			final POSModel posModel = new POSModel(modelIn);
+			modelIn.close();
+			_posTagger = new POSTaggerME(posModel);
+			is = new FileInputStream("en-token.bin");
+			TokenizerModel model = new TokenizerModel(is);
+			tokenizer = new TokenizerME(model);
+			if(mm=="mm")
+			{
+				mms = new MetaMap();
+			}
 		}
 		catch(Exception ex)
 		{
@@ -90,6 +118,8 @@ public class MarvinSemAnnotator {
 				}
 				words.add(w);
 			}
+			mms.getMetaMapMeanings(text);
+			
 			return words;
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -130,6 +160,20 @@ public class MarvinSemAnnotator {
 		}
 		
 	}
+	
+	public LinkedList<Word> annotateMetaMapOnly(String text)
+	{
+		try{
+			words = new LinkedList<Word>();
+			mms.getMetaMapMeanings(text);
+			return words;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+		
+	}
+	
 	
 	public LinkedList<Word> annotateDBPediaOnly(String text)
 	{
