@@ -18,6 +18,13 @@ import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 
 public class DBPediaQuery {
+	
+	private String SPARQLEndpoint = "";
+	
+	public DBPediaQuery(String SPARQL)
+	{
+		SPARQLEndpoint = SPARQL;
+	}
 
 	public LinkedList<WordMeaningOutputElement> queryDBPedia(String word,
 			int start, int end) {
@@ -39,7 +46,7 @@ public class DBPediaQuery {
 		Literal wordLiteral = ResourceFactory.createLangLiteral(word, "en");
 		qs.setParam("label", wordLiteral);
 		QueryExecution exec = QueryExecutionFactory.sparqlService(
-				"http://dbpedia.org/sparql", qs.asQuery());
+				SPARQLEndpoint, qs.asQuery());
 
 		// Normally you'd just do results = exec.execSelect(), but I want to
 		// use this ResultSet twice, so I'm making a copy of it.
@@ -87,7 +94,7 @@ public class DBPediaQuery {
 
 		Literal wordLiteral = ResourceFactory.createLangLiteral(word, "en");
 		qs.setParam("label", wordLiteral);
-		QueryExecution exec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql",
+		QueryExecution exec = QueryExecutionFactory.sparqlService(SPARQLEndpoint,
 				qs.asQuery());
 
 		ResultSet results = ResultSetFactory.copyResults(exec.execSelect());

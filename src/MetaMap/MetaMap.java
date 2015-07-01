@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import Main.MarvinSemAnnotator;
 import Main.Word;
 import Main.WordMeaningOutputElement;
 
@@ -76,7 +77,7 @@ public class MetaMap {
 	        String line = br.readLine();
 
 	        while (line != null) {
-	        	String[] parts = line.split("|");
+	        	String[] parts = line.split("\\|");
 	        	UMLSSemanticType type = new UMLSSemanticType();
 	        	type.shortName = parts[0];
 	        	type.TypeID = parts[1];
@@ -154,21 +155,21 @@ public class MetaMap {
 								}
 							}
 							boolean found = false;
-							for(int s= 0;s<Main.Main.words.size();s++)
+							for(int s= 0;s<MarvinSemAnnotator.words.size();s++)
 							{
-								if(Main.Main.words.get(s).starting<=wm.startAt && Main.Main.words.get(s).ending>=wm.endAt)
+								if(MarvinSemAnnotator.words.get(s).starting<=wm.startAt && MarvinSemAnnotator.words.get(s).ending>=wm.endAt)
 								{
 									boolean containsId= false;
-									for(int k = 0;k<Main.Main.words.get(s).wordmeanings.size();k++)
+									for(int k = 0;k<MarvinSemAnnotator.words.get(s).wordmeanings.size();k++)
 									{
-										if(Main.Main.words.get(s).wordmeanings.get(k).id.equals(wm.id))
+										if(MarvinSemAnnotator.words.get(s).wordmeanings.get(k).id.equals(wm.id))
 										{
 											containsId = true;
 											found = true;
 										}
 									}
 									if(containsId)continue;
-									Main.Main.words.get(s).wordmeanings.add(wm);
+									MarvinSemAnnotator.words.get(s).wordmeanings.add(wm);
 									found = true;
 									System.out.println(mapEv.getConceptId());
 									System.out.println(mapEv.getMatchedWords().toString());
@@ -183,7 +184,7 @@ public class MetaMap {
 								w.ending = wm.endAt;
 								w.word = wm.appearingWord;
 								w.wordmeanings.add(wm);
-								Main.Main.words.add(w);	
+								MarvinSemAnnotator.words.add(w);	
 							}
 //							mp.put(i++, mapEv.getConceptId());
 //							mp.put(i++, mapEv.getMatchedWords().toString());
