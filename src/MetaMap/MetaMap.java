@@ -35,7 +35,6 @@ public class MetaMap {
 		
 	    try {
 	    	BufferedReader br = new BufferedReader(new FileReader("SemanticTypes_2013AA.txt"));
-	        StringBuilder sb = new StringBuilder();
 	        String line = br.readLine();
 
 	        while (line != null) {
@@ -64,7 +63,6 @@ public class MetaMap {
 		theOptions.add("-y"); // turn on Word Sense Disambiguation
 		theOptions.add("-i");
 		theOptions.add("-l");
-		// theOptions.add("-R SNOMEDCT,ICD10CM,ICD9CM,ICF,ICF-CY,RXNORM");
 		for (String opt : theOptions)
 			api.setOptions(opt);
 	}
@@ -73,7 +71,6 @@ public class MetaMap {
 		
 	    try {
 	    	BufferedReader br = new BufferedReader(new FileReader("SemanticTypes_2013AA.txt"));
-	        StringBuilder sb = new StringBuilder();
 	        String line = br.readLine();
 
 	        while (line != null) {
@@ -100,27 +97,20 @@ public class MetaMap {
 		theOptions.add("-y"); // turn on Word Sense Disambiguation
 		theOptions.add("-i");
 		theOptions.add("-l");
-		// theOptions.add("-R SNOMEDCT,ICD10CM,ICD9CM,ICF,ICF-CY,RXNORM");
 		for (String opt : theOptions)
 			api.setOptions(opt);
 	}
 
 	public void getMetaMapMeanings(String term)
 			throws Exception {
-		// String[] classfication = new String[3];
-		//Map<Object, String> mp = new HashMap<Object, String>();
-
 		// Certain characters may cause MetaMap to throw an exception;
 		// filter terms before passing to mm.
 		term = term.replaceAll("'", "");
 		term = term.replaceAll("\"", "");
 
-		//System.out.println(api.getSession());
-
 		api.setTimeout(5000);
 
 		List<Result> resultList = api.processCitationsFromString(term);
-		int i = 0;
 		for (Result result : resultList) {
 			for (Utterance utterance : result.getUtteranceList()) {
 				for (PCM pcm : utterance.getPCMList()) {
@@ -139,7 +129,6 @@ public class MetaMap {
 									wm.appearingWord+=mapEv.getMatchedWords().get(k)+" ";
 								}
 							}
-							//wm.appearingWord =  mapEv.getMatchedWords().toString();
 							wm.startAt = mapEv.getPositionalInfo().get(0).getX();
 							wm.endAt = wm.startAt+mapEv.getPositionalInfo().get(0).getY();
 							wm.Source = "MetaMap";
@@ -186,21 +175,11 @@ public class MetaMap {
 								w.wordmeanings.add(wm);
 								MarvinSemAnnotator.words.add(w);	
 							}
-//							mp.put(i++, mapEv.getConceptId());
-//							mp.put(i++, mapEv.getMatchedWords().toString());
-//							mp.put(i++, mapEv.getPositionalInfo().toString());
-//							mp.put(i++, mapEv.getSemanticTypes().get(0)); 
-//							mp.put(i++, mapEv.getTerm().getName());
-//							mp.put(i++, mapEv.getConceptName());
-//							mp.put(i++, mapEv.getMatchMap().toString());
-//							mp.put(i++, mapEv.getSources().toString());
-//							mp.put(i++, mapEv.getPreferredName());
 						}
 					}
 				}
 			}
 		}
-	//	return mp;
 	}
 
 }

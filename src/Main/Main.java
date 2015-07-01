@@ -12,7 +12,6 @@ public class Main {
 		text = args[0];
 		System.out.println(text);
 		MarvinSemAnnotator msa = new MarvinSemAnnotator();
-		//InputStream is;
 		try {
 			MarvinSemAnnotator.words = msa.annotate(text);
 

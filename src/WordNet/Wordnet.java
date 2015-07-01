@@ -48,7 +48,6 @@ public class Wordnet {
 			Synset[] senses = Iword.getSenses();
 			for (int i = 0; i < senses.length; i++) {
 				WordMeaningOutputElement o = new WordMeaningOutputElement();
-				//System.out.println(senses[i]);
 				o.Description = senses[i].getGloss();
 				o.appearingWord = word;
 				o.Source = "WordNet";
