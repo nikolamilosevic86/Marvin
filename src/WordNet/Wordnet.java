@@ -26,7 +26,7 @@ public class Wordnet {
 	}
 
 	public LinkedList<WordMeaningOutputElement> getSencesFromWordnet(
-			String word, String tag, int start, int end, String[] tokens) {
+			String word, String tag, int start, int end, String[] tokens,int tokenPos) {
 
 		LinkedList<WordMeaningOutputElement> sences = new LinkedList<WordMeaningOutputElement>();
 		try {
@@ -46,7 +46,7 @@ public class Wordnet {
 			if (Iword == null)
 				return sences;
 			
-			Synset[] senses = WordSenseDisambiguator.getRightSenses(Iword.getSenses(),tokens);
+			Synset[] senses = WordSenseDisambiguator.getRightSenses(Iword.getSenses(),tokens,tokenPos);
 			for (int i = 0; i < senses.length; i++) {
 				WordMeaningOutputElement o = new WordMeaningOutputElement();
 				o.Description = senses[i].getGloss();

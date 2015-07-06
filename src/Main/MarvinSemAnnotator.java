@@ -127,7 +127,7 @@ public class MarvinSemAnnotator {
 				w.word = tokens[i];
 				if (WordNetAnnotate) {
 					w.wordmeanings.addAll(wn.getSencesFromWordnet(w.word,
-							tags[i], w.starting, w.ending,tokens));
+							tags[i], w.starting, w.ending,tokens,i));
 				}
 				// TODO: ADD DBPedia as local instance
 				if (DBPediaAnnptate) {
@@ -165,7 +165,7 @@ public class MarvinSemAnnotator {
 				w.ending = tokens2[i].getEnd();
 				w.word = tokens[i];
 				w.wordmeanings.addAll(wn.getSencesFromWordnet(w.word, tags[i],
-						w.starting, w.ending,tokens));
+						w.starting, w.ending,tokens,i));
 
 				// TODO: ADD DBPedia as local instance
 				// w.wordmeanings.addAll(db.queryDBPedia(w.word, w.starting,

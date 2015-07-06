@@ -9,11 +9,20 @@ public class WordSenseDisambiguator {
 	
 	
 	
-	public static Synset[] getRightSenses(Synset[] sences, String[] tokens)
+	public static Synset[] getRightSenses(Synset[] sences, String[] tokens,int tokenPos)
 	{
 		LinkedList<Synset> outputSynset = new  LinkedList<Synset>();
 		LinkedList<SynsetCnt> synsets = new LinkedList<SynsetCnt>();
 		float bestProp = 0;
+		LinkedList<String> tokensa = new LinkedList<String>();
+		for(int i = tokenPos -15;i<tokenPos+15;i++)
+		{
+			if(i>=0 && i<tokens.length)
+			{
+				tokensa.add(tokens[i]);
+			}
+		}
+		tokens = tokensa.toArray(new String[tokensa.size()]);
 		for(int i = 0;i<sences.length;i++){
 			String[] defTokens = MarvinSemAnnotator.tokenizer.tokenize(sences[i].getGloss());
 			int currentSameCnt = 0;
