@@ -13,12 +13,7 @@ public class WordSenseDisambiguator {
 	{
 		LinkedList<Synset> outputSynset = new  LinkedList<Synset>();
 		LinkedList<SynsetCnt> synsets = new LinkedList<SynsetCnt>();
-		Synset bestSynset;
 		float bestProp = 0;
-		if(sences.length>0)
-		{
-			bestSynset = sences[0];
-		}
 		for(int i = 0;i<sences.length;i++){
 			String[] defTokens = MarvinSemAnnotator.tokenizer.tokenize(sences[i].getGloss());
 			int currentSameCnt = 0;
@@ -36,7 +31,6 @@ public class WordSenseDisambiguator {
 			if(prop>bestProp)
 			{
 				bestProp = prop;
-				bestSynset = sences[i];
 			}
 			SynsetCnt synsetcnta = new SynsetCnt();
 			synsetcnta.synset = sences[i];
