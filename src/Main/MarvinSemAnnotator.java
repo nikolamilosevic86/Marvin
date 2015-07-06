@@ -22,7 +22,7 @@ import WordNet.Wordnet;
 public class MarvinSemAnnotator {
 
 	/** The tokenizer. */
-	private Tokenizer tokenizer;
+	public static Tokenizer tokenizer;
 
 	/** The words. */
 	public static LinkedList<Word> words;
@@ -46,7 +46,7 @@ public class MarvinSemAnnotator {
 	public String DBPediaEndpoint = "";
 	public String MetaMap_host = "";
 	public int MetaMap_port = 8066;
-
+	
 	/**
 	 * Instantiates a new annotator.
 	 */
@@ -127,7 +127,7 @@ public class MarvinSemAnnotator {
 				w.word = tokens[i];
 				if (WordNetAnnotate) {
 					w.wordmeanings.addAll(wn.getSencesFromWordnet(w.word,
-							tags[i], w.starting, w.ending));
+							tags[i], w.starting, w.ending,tokens));
 				}
 				// TODO: ADD DBPedia as local instance
 				if (DBPediaAnnptate) {
@@ -165,7 +165,7 @@ public class MarvinSemAnnotator {
 				w.ending = tokens2[i].getEnd();
 				w.word = tokens[i];
 				w.wordmeanings.addAll(wn.getSencesFromWordnet(w.word, tags[i],
-						w.starting, w.ending));
+						w.starting, w.ending,tokens));
 
 				// TODO: ADD DBPedia as local instance
 				// w.wordmeanings.addAll(db.queryDBPedia(w.word, w.starting,

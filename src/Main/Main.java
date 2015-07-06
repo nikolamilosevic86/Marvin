@@ -13,7 +13,7 @@ public class Main {
 		System.out.println(text);
 		MarvinSemAnnotator msa = new MarvinSemAnnotator();
 		try {
-			MarvinSemAnnotator.words = msa.annotate(text);
+			MarvinSemAnnotator.words = msa.annotateWordNetOnly(text);
 
 			for (int i = 0; i < MarvinSemAnnotator.words.size(); i++) {
 				System.out.println("Word: " + MarvinSemAnnotator.words.get(i).word);
