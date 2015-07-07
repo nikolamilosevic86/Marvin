@@ -138,6 +138,12 @@ public class MarvinSemAnnotator {
 								+ tokens[i + 1], w.starting,
 								tokens2[i + 1].getEnd()));
 					}
+					
+					if (i + 2 < tokens.length) {
+						w.wordmeanings.addAll(db.queryDBPedia(w.word + " "
+								+ tokens[i + 1]+ " "+tokens[i + 2], w.starting,
+								tokens2[i + 1].getEnd()));
+					}
 				}
 				words.add(w);
 			}
@@ -215,6 +221,11 @@ public class MarvinSemAnnotator {
 				if (i + 1 < tokens.length) {
 					w.wordmeanings.addAll(db.queryDBPedia(w.word + " "
 							+ tokens[i + 1], w.starting,
+							tokens2[i + 1].getEnd()));
+				}
+				if (i + 2 < tokens.length) {
+					w.wordmeanings.addAll(db.queryDBPedia(w.word + " "
+							+ tokens[i + 1]+ " "+tokens[i + 2], w.starting,
 							tokens2[i + 1].getEnd()));
 				}
 				words.add(w);
