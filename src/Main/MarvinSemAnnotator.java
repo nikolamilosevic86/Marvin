@@ -60,7 +60,7 @@ public class MarvinSemAnnotator {
 
 			while (line != null) {
 				KeyValue kv = new KeyValue();
-				String[] parts = line.split(":");
+				String[] parts = line.split(";");
 				kv.key = parts[0];
 				kv.value = parts[1];
 				if (kv.key.equals("use_dbpedia") && kv.value.equals("true")) {

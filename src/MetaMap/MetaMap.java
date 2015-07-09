@@ -160,10 +160,10 @@ public class MetaMap {
 									if(containsId)continue;
 									MarvinSemAnnotator.words.get(s).wordmeanings.add(wm);
 									found = true;
-									System.out.println(mapEv.getConceptId());
-									System.out.println(mapEv.getMatchedWords().toString());
-									System.out.println(mapEv.getPositionalInfo().toString());
-									System.out.println( mapEv.getSemanticTypes().get(0));
+//									System.out.println(mapEv.getConceptId());
+//									System.out.println(mapEv.getMatchedWords().toString());
+//									System.out.println(mapEv.getPositionalInfo().toString());
+//									System.out.println( mapEv.getSemanticTypes().get(0));
 								}
 							}
 							if(!found)
