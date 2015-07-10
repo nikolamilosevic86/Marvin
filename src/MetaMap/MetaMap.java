@@ -13,6 +13,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import Main.MarvinSemAnnotator;
 import Main.Word;
@@ -107,6 +109,16 @@ public class MetaMap {
 		// filter terms before passing to mm.
 		term = term.replaceAll("'", "");
 		term = term.replaceAll("\"", "");
+		term = term.trim();
+		term = term.replace("\n", "");
+		String patternString = "[a-zA-Z0-9 +-=~\\/()\\[\\]@\"\'.%£^&\\*{};:]*";
+		Pattern pattern = Pattern.compile(patternString);
+		Matcher matcher = pattern.matcher(term);
+		String sa = "";
+		while (matcher.find()) {
+			sa += matcher.group();
+		}
+		term = sa;
 
 		api.setTimeout(5000);
 
