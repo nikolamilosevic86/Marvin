@@ -111,6 +111,7 @@ public class MetaMap {
 		term = term.replaceAll("\"", "");
 		term = term.trim();
 		term = term.replace("\n", "");
+		//normalizing input for just string that are processable by MetaMap
 		String patternString = "[a-zA-Z0-9 +-=~\\/()\\[\\]@\"\'.%£^&\\*{};:]*";
 		Pattern pattern = Pattern.compile(patternString);
 		Matcher matcher = pattern.matcher(term);
@@ -121,6 +122,8 @@ public class MetaMap {
 		term = sa;
 
 		api.setTimeout(5000);
+		if(term.equals(""))
+			return;
 
 		List<Result> resultList = api.processCitationsFromString(term);
 		for (Result result : resultList) {
