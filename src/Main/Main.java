@@ -13,6 +13,7 @@ public class Main {
 		System.out.println(text);
 		MarvinSemAnnotator msa = new MarvinSemAnnotator();
 		try {
+
 			MarvinSemAnnotator.words = msa.annotate(text);
 
 			for (int i = 0; i < MarvinSemAnnotator.words.size(); i++) {
@@ -24,6 +25,7 @@ public class Main {
 							+ MarvinSemAnnotator.words.get(i).wordmeanings.get(j).Description);
 				}
 			}
+			
 
 		} catch (Exception ex) {
 			ex.printStackTrace();

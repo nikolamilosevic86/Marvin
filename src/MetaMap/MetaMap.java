@@ -109,10 +109,12 @@ public class MetaMap {
 			throws Exception {
 		byte[] b = term.getBytes(StandardCharsets.US_ASCII);
 		term =  new String(b);
+
 		// Certain characters may cause MetaMap to throw an exception;
 		// filter terms before passing to mm.
 		term = term.replaceAll("'", "");
 		term = term.replaceAll("\"", "");
+		term = term.replaceAll("\\?", " ");
 		term = term.trim();
 		term = term.replace("\n", "");
 		//normalizing input for just string that are processable by MetaMap
@@ -124,6 +126,23 @@ public class MetaMap {
 			sa += matcher.group();
 		}
 		term = sa;
+		term = term.replaceAll("  ", " ");
+		term = term.replaceAll("   ", " ");
+		term = term.replaceAll("  ", " ");
+		term = term.replaceAll("  ", " ");
+		term = term.replaceAll("(\\d)*(\\.)*(\\d)*", "");
+		
+		String[] terms = term.split(" ");
+		
+		term = "";
+		for(String terma:terms)
+		{
+			terma=terma.trim();
+			term+=" "+terma;
+		}
+		term = term.replaceFirst(" ", "");
+		term = term.trim();
+		System.out.println(term);
 
 		api.setTimeout(5000);
 		if(term.equals(""))
