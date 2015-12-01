@@ -11,6 +11,7 @@ import gov.nih.nlm.nls.metamap.Utterance;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -106,7 +107,8 @@ public class MetaMap {
 
 	public void getMetaMapMeanings(String term)
 			throws Exception {
-		term = Charset.forName("US-ASCII").encode(term).toString();
+		byte[] b = term.getBytes(StandardCharsets.US_ASCII);
+		term =  new String(b);
 		// Certain characters may cause MetaMap to throw an exception;
 		// filter terms before passing to mm.
 		term = term.replaceAll("'", "");
