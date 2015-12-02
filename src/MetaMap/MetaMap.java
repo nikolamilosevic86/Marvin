@@ -130,7 +130,7 @@ public class MetaMap {
 		term = term.replaceAll("   ", " ");
 		term = term.replaceAll("  ", " ");
 		term = term.replaceAll("  ", " ");
-		term = term.replaceAll("(\\d)*(\\.)*(\\d)*", "");
+		term = term.replaceAll("\\d", "X");
 		
 		String[] terms = term.split(" ");
 		
