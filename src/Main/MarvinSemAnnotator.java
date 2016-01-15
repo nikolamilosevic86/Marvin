@@ -46,6 +46,14 @@ public class MarvinSemAnnotator {
 	public String DBPediaEndpoint = "";
 	public String MetaMap_host = "";
 	public int MetaMap_port = 8066;
+	public static String MetaMapName = "";
+	public static String MetaMapVersion = "";
+	public static String WordNetName = "";
+	public static String WordNetVersion = "";
+	public static String DBPediaName = "";
+	public static String DBPediaVersion = "";
+	public static String Location = "";
+	public static String Environment = "";
 	
 	/**
 	 * Instantiates a new annotator.
@@ -81,7 +89,24 @@ public class MarvinSemAnnotator {
 				if (kv.key.equals("metamap_port")) {
 					MetaMap_port = Integer.parseInt(kv.value);
 				}
-				line = br.readLine();
+				if (kv.key.equals("location")) {
+					Location = kv.value;
+				}
+				if (kv.key.equals("env_desc")) {
+					Environment = kv.value;
+				}
+				if (kv.key.equals("metamap_desc")) {
+					MetaMapName = parts[1];
+					MetaMapVersion = parts[2];
+				}
+				if (kv.key.equals("dbpedia_desc")) {
+					DBPediaName = parts[1];
+					DBPediaVersion = parts[2];
+				}
+				if (kv.key.equals("wordnet_desc")) {
+					WordNetName = parts[1];
+					WordNetVersion = parts[2];
+				}
 			}
 			br.close();
 			if(MetaMapAnnotate)

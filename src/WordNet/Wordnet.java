@@ -3,6 +3,7 @@ package WordNet;
 import java.io.FileInputStream;
 import java.util.LinkedList;
 
+import Main.MarvinSemAnnotator;
 import Main.WordMeaningOutputElement;
 import net.didion.jwnl.JWNL;
 import net.didion.jwnl.data.IndexWord;
@@ -57,6 +58,10 @@ public class Wordnet {
 				o.endAt = end;
 				o.URL = "http://wordnetweb.princeton.edu/perl/webwn?s="
 						+ senses[i].getWord(0).getLemma();
+				o.AgentName = MarvinSemAnnotator.WordNetName;
+				o.AgentVersion = MarvinSemAnnotator.WordNetVersion;
+				o.Location = MarvinSemAnnotator.Location;
+				o.EnvironmentDesc = MarvinSemAnnotator.Environment;
 				sences.add(o);
 
 			}

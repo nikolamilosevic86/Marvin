@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import org.apache.commons.lang3.text.WordUtils;
 
+import Main.MarvinSemAnnotator;
 import Main.WordMeaningOutputElement;
 
 import com.hp.hpl.jena.query.ParameterizedSparqlString;
@@ -63,6 +64,10 @@ public class DBPediaQuery {
 			o.startAt = start;
 			o.endAt = end;
 			o.URL = sol.get("resource").toString();
+			o.AgentName = MarvinSemAnnotator.DBPediaName;
+			o.AgentVersion = MarvinSemAnnotator.DBPediaVersion;
+			o.Location = MarvinSemAnnotator.Location;
+			o.EnvironmentDesc = MarvinSemAnnotator.Environment;
 			boolean exists = false;
 			for (int k = 0; k < elements.size(); k++) {
 				if (elements.get(k).id.equals(o.id)) {
@@ -110,6 +115,10 @@ public class DBPediaQuery {
 			o.startAt = start;
 			o.endAt = end;
 			o.URL = sol.get("resource").toString();
+			o.AgentName = MarvinSemAnnotator.DBPediaName;
+			o.AgentVersion = MarvinSemAnnotator.DBPediaVersion;
+			o.Location = MarvinSemAnnotator.Location;
+			o.EnvironmentDesc = MarvinSemAnnotator.Environment;
 			boolean exists = false;
 			for (int k = 0; k < elements.size(); k++) {
 				if (elements.get(k).id.equals(o.id)) {

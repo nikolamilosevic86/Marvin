@@ -172,6 +172,10 @@ public class MetaMap {
 							wm.Source = "MetaMap";
 							wm.id = mapEv.getConceptId();
 							wm.URL = "http://www.medindex.am/glossary/mesh/defini.php?action=search&type=cui&word="+mapEv.getConceptId();
+							wm.AgentName = MarvinSemAnnotator.MetaMapName;
+							wm.AgentVersion = MarvinSemAnnotator.MetaMapVersion;
+							wm.Location = MarvinSemAnnotator.Location;
+							wm.EnvironmentDesc = MarvinSemAnnotator.Environment;
 							wm.Description = mapEv.getSemanticTypes().get(0);
 							for(int l = 0; l<UMLSSemTypes.size();l++)
 							{
