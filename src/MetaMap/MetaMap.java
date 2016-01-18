@@ -10,7 +10,6 @@ import gov.nih.nlm.nls.metamap.Utterance;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -27,7 +26,6 @@ public class MetaMap {
 	{
 		public String shortName;
 		public String LongName;
-		public String TypeID;
 	}
 	
 	private LinkedList<UMLSSemanticType> UMLSSemTypes = new LinkedList<MetaMap.UMLSSemanticType>();
@@ -45,7 +43,7 @@ public class MetaMap {
 	        	String[] parts = line.split("\\|");
 	        	UMLSSemanticType type = new UMLSSemanticType();
 	        	type.shortName = parts[0];
-	        	type.TypeID = parts[1];
+	        	//type.TypeID = parts[1];
 	        	type.LongName = parts[2];
 	        	UMLSSemTypes.add(type);
 	            line = br.readLine();
@@ -81,7 +79,7 @@ public class MetaMap {
 	        	String[] parts = line.split("\\|");
 	        	UMLSSemanticType type = new UMLSSemanticType();
 	        	type.shortName = parts[0];
-	        	type.TypeID = parts[1];
+	        	//type.TypeID = parts[1];
 	        	type.LongName = parts[2];
 	        	UMLSSemTypes.add(type);
 	            line = br.readLine();
