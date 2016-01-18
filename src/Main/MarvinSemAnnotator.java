@@ -107,6 +107,7 @@ public class MarvinSemAnnotator {
 					WordNetName = parts[1];
 					WordNetVersion = parts[2];
 				}
+				line = br.readLine();
 			}
 			br.close();
 			if(MetaMapAnnotate)
