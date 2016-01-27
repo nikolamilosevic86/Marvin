@@ -14,6 +14,8 @@ import opennlp.tools.tokenize.TokenizerModel;
 import opennlp.tools.util.Span;
 import DBPedia.DBPediaQuery;
 import MetaMap.MetaMap;
+import SKOS.SKOS;
+import SKOS.SKOSThesaurus;
 import WordNet.Wordnet;
 
 /**
@@ -54,6 +56,7 @@ public class MarvinSemAnnotator {
 	public static String DBPediaVersion = "";
 	public static String Location = "";
 	public static String Environment = "";
+	public static LinkedList<SKOSThesaurus> SKOSThesauri = new LinkedList<SKOSThesaurus>();
 	
 	/**
 	 * Instantiates a new annotator.
@@ -107,6 +110,21 @@ public class MarvinSemAnnotator {
 					WordNetName = parts[1];
 					WordNetVersion = parts[2];
 				}
+				if (kv.key.equals("SKOS")) {
+					SKOSThesaurus skos = new SKOSThesaurus();
+					skos.setFilePath(parts[1]);
+					skos.setVersion(parts[2]);
+					skos.setVocabularyName(parts[3]);
+					if(parts[4].equals("true"))
+					{
+						skos.setIsUsed(true);
+					}
+					else
+					{
+						skos.setIsUsed(false);
+					}
+					SKOSThesauri.add(skos);
+				}
 				line = br.readLine();
 			}
 			br.close();
@@ -117,6 +135,13 @@ public class MarvinSemAnnotator {
 			if(DBPediaAnnptate)
 			{
 				db = new DBPediaQuery(DBPediaEndpoint);
+			}
+			
+			for(int i = 0;i<SKOSThesauri.size();i++)
+			{
+				if(SKOSThesauri.get(i).isUsed()){
+					SKOSThesauri.get(i).Thesaurus = new SKOS(SKOSThesauri.get(i).getFilePath(),SKOSThesauri.get(i).getVersion());
+				}
 			}
 
 			InputStream modelIn = null;
@@ -171,10 +196,22 @@ public class MarvinSemAnnotator {
 								tokens2[i + 1].getEnd()));
 					}
 				}
+				
+				
+				
+				
 				words.add(w);
 			}
 			if (MetaMapAnnotate) {
 				mms.getMetaMapMeanings(text);
+			}
+			for(int j = 0 ;j<SKOSThesauri.size();j++)
+			{
+				SKOSThesaurus Thesauri = SKOSThesauri.get(j);
+				if(Thesauri.isUsed())
+				{
+					Thesauri.Thesaurus.annotate(text,Thesauri);
+				}
 			}
 
 			return words;

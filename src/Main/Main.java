@@ -21,7 +21,7 @@ public class Main {
 				System.out.println("Meaninigs:");
 				for (int j = 0; j < MarvinSemAnnotator.words.get(i).wordmeanings.size(); j++) {
 					System.out.println("Meaninig ("
-							+ MarvinSemAnnotator.words.get(i).wordmeanings.get(j).Source + "): "+MarvinSemAnnotator.words.get(i).wordmeanings.get(j).id+"   "
+							+ MarvinSemAnnotator.words.get(i).wordmeanings.get(j).Source + ")["+MarvinSemAnnotator.words.get(i).wordmeanings.get(j).startAt+":"+MarvinSemAnnotator.words.get(i).wordmeanings.get(j).endAt+"]: "+MarvinSemAnnotator.words.get(i).wordmeanings.get(j).id+"   "
 							+ MarvinSemAnnotator.words.get(i).wordmeanings.get(j).Description);
 				}
 			}
