@@ -148,6 +148,7 @@ public class SKOS {
 	
 	public void annotate(String text,SKOSThesaurus Thesauri)
 	{
+		text = text.toLowerCase();
 		String[] text_tokens = MarvinSemAnnotator.tokenizer.tokenize(text);
 		Set<String> temp = new HashSet<String>(Arrays.asList(text_tokens));
 		text_tokens = temp.toArray(new String[temp.size()]);
