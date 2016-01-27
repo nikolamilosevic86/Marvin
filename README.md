@@ -23,7 +23,7 @@ In order to run Marvin semantic annotator you can type in command line
 ```java -jar Marvin.jar "Sentence to be semantically annotated."```
 
 ##Running Marvin as a library
-```
+```java
 public void Annotate(String valueToParse){
 	MarvinSemAnnotator marvin = new MarvinSemAnnotator();
 	LinkedList<Word> words = marvin.annotate(valueToParse);
