@@ -61,7 +61,7 @@ public class SKOS {
 	            for (SKOSConcept concept : dataset.getSKOSConcepts()) {
 	            	SKOSSingleConcept conc = new SKOSSingleConcept();
 
-	                System.out.println("Concept: " + concept.getURI());
+	               // System.out.println("Concept: " + concept.getURI());
 	                conc.URI = concept.getURI().toString();
 	                conc.id = concept.getURI().toString();
 
@@ -72,7 +72,7 @@ public class SKOS {
 	                 */
 
 	                // finally get any OWL annotations - the object of a annotation property can be a literal or an entity
-	                System.out.println("\tAnnotation property assertions:");
+	             //   System.out.println("\tAnnotation property assertions:");
 	                for (SKOSAnnotation assertion : dataset.getSKOSAnnotations(concept)) {
 
 	                    // if the annotation is a literal annotation?
@@ -86,7 +86,7 @@ public class SKOS {
 	                        if(assertion.getURI().getFragment().equals("altLabel"))
 	                        {
 	                        	conc.altLabels.add(value);
-	                        	System.out.println("Alternative:"+value);
+	                        	//System.out.println("Alternative:"+value);
 	                        }
 	                        if(assertion.getURI().getFragment().equals("prefLabel"))
 	                        {
@@ -95,7 +95,7 @@ public class SKOS {
 	                        if(assertion.getURI().getFragment().equals("definition"))
 	                        {
 	                        	conc.Description = value;
-	                        	System.out.println("Definition:"+value);
+	                     //   	System.out.println("Definition:"+value);
 	                        }
 	                        if (!literal.isTyped()) {
 	                            // if it has  language
@@ -120,9 +120,9 @@ public class SKOS {
 	                        	
 	                        }
 	                    }
-	                    System.out.println("\t\t" + assertion.getURI().getFragment() + " " + value + " Lang:" + lang);
+	                    //System.out.println("\t\t" + assertion.getURI().getFragment() + " " + value + " Lang:" + lang);
 	                }
-	                System.out.println("");
+	              //  System.out.println("");
 	                UriMap.put(conc.URI,  conc);
 	                for(int i = 0; i<conc.altLabels.size();i++)
 	                {
