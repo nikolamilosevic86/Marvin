@@ -10,7 +10,11 @@ After the installation it is necessary to configure Wordnet path in file_propert
 
 ```<param name="dictionary_path" value="C:\Program Files (x86)\WordNet\2.1\dict"/>```
 
-has to be changed with the correct path within the machine where Wordnet is installed. There are no other requirements for the installation.
+has to be changed with the correct path within the machine where Wordnet is installed. 
+
+Before running, you will also need to set the configuration of what resuources you would like to use in settings.cfg file. This file should be supplied with information on resources (what should be used, host and port of MetaMap if used, DBPedia SPARQL gateway if DBPedia is used, location of SKOS files and some information about your system and location for provenance)
+
+There are no other requirements for the installation.
 
 ##Running Marvin semantic text annotator
 
