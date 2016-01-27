@@ -23,6 +23,12 @@ In order to run Marvin semantic annotator you can type in command line
 ```java -jar Marvin.jar "Sentence to be semantically annotated."```
 
 ##Running Marvin as a library
+
+How to run marvin as a library would be best described in a code snippet bellow. You need just to create object of MarvinSemAnnotator and invoke method "annotate" with the text to be annotated.
+
+Marvin returns a linked list of Word objects and each Word object contains a LinkedList of annotations in list called wordmeanings.
+
+
 ```java
 public void Annotate(String valueToParse){
 	MarvinSemAnnotator marvin = new MarvinSemAnnotator();
@@ -47,6 +53,9 @@ public void Annotate(String valueToParse){
 
 ##Methodology
 
-##Roadmap
 
 ##Credits
+
+Developed by Nikola Milosevic - nikola.milosevic[at nospam] manchester.ac.uk
+
+Feel free to contact me for any kind of information or queries regarding the project. 
