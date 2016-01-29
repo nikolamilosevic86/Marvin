@@ -1,8 +1,11 @@
 package SKOS;
 
 import java.net.URI;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -188,9 +191,12 @@ public class SKOS {
 					wo.EnvironmentDesc = MarvinSemAnnotator.Environment;
 					wo.Location = MarvinSemAnnotator.Location;
 					wo.URL = conc.URI;
-					wo.Source = "SKOS";
+					wo.AnnotatorSystem = "SKOS";
 					wo.startAt = index;
 					wo.endAt = index+search_term.length();
+					DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+					Date date = new Date();
+					wo.dateTime = dateFormat.format(date);
 					boolean containsAnnotations = false;
 					for(WordMeaningOutputElement meaning:w.wordmeanings)
 					{
@@ -245,9 +251,12 @@ public class SKOS {
 						wo.EnvironmentDesc = MarvinSemAnnotator.Environment;
 						wo.Location = MarvinSemAnnotator.Location;
 						wo.URL = conc.URI;
-						wo.Source = "SKOS";
+						wo.AnnotatorSystem = "SKOS";
 						wo.startAt = index;
 						wo.endAt = index+search_term.length();
+						DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+						Date date = new Date();
+						wo.dateTime = dateFormat.format(date);
 						boolean containsAnnotations = false;
 						for(WordMeaningOutputElement meaning:w.wordmeanings)
 						{
@@ -287,9 +296,12 @@ public class SKOS {
 		wo.EnvironmentDesc = MarvinSemAnnotator.Environment;
 		wo.Location = MarvinSemAnnotator.Location;
 		wo.URL = conc.URI;
-		wo.Source = "SKOS";
+		wo.AnnotatorSystem = "SKOS";
 		wo.startAt = w.starting;
 		wo.endAt = w.ending;
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date date = new Date();
+		wo.dateTime = dateFormat.format(date);
 		boolean containsAnnotations = false;
 		for(WordMeaningOutputElement meaning:w.wordmeanings)
 		{

@@ -1,5 +1,8 @@
 package DBPedia;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 
 import org.apache.commons.lang3.text.WordUtils;
@@ -59,7 +62,7 @@ public class DBPediaQuery {
 			WordMeaningOutputElement o = new WordMeaningOutputElement();
 			o.Description = sol.get("?abstract").toString();
 			o.appearingWord = word;
-			o.Source = "DBPedia";
+			o.AnnotatorSystem = "DBPedia";
 			o.id = sol.get("resource").toString();
 			o.startAt = start;
 			o.endAt = end;
@@ -68,6 +71,9 @@ public class DBPediaQuery {
 			o.AgentVersion = MarvinSemAnnotator.DBPediaVersion;
 			o.Location = MarvinSemAnnotator.Location;
 			o.EnvironmentDesc = MarvinSemAnnotator.Environment;
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+			Date date = new Date();
+			o.dateTime = dateFormat.format(date);
 			boolean exists = false;
 			for (int k = 0; k < elements.size(); k++) {
 				if (elements.get(k).id.equals(o.id)) {
@@ -110,7 +116,7 @@ public class DBPediaQuery {
 			WordMeaningOutputElement o = new WordMeaningOutputElement();
 			o.Description = sol.get("?abstract").toString();
 			o.appearingWord = word;
-			o.Source = "DBPedia";
+			o.AnnotatorSystem = "DBPedia";
 			o.id = sol.get("resource").toString();
 			o.startAt = start;
 			o.endAt = end;
@@ -119,6 +125,9 @@ public class DBPediaQuery {
 			o.AgentVersion = MarvinSemAnnotator.DBPediaVersion;
 			o.Location = MarvinSemAnnotator.Location;
 			o.EnvironmentDesc = MarvinSemAnnotator.Environment;
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+			Date date = new Date();
+			o.dateTime = dateFormat.format(date);
 			boolean exists = false;
 			for (int k = 0; k < elements.size(); k++) {
 				if (elements.get(k).id.equals(o.id)) {

@@ -11,7 +11,10 @@ import gov.nih.nlm.nls.metamap.Utterance;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.nio.charset.StandardCharsets;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -167,7 +170,7 @@ public class MetaMap {
 							}
 							wm.startAt = mapEv.getPositionalInfo().get(0).getX();
 							wm.endAt = wm.startAt+mapEv.getPositionalInfo().get(0).getY();
-							wm.Source = "MetaMap";
+							wm.AnnotatorSystem = "MetaMap";
 							wm.id = mapEv.getConceptId();
 							wm.URL = "http://www.medindex.am/glossary/mesh/defini.php?action=search&type=cui&word="+mapEv.getConceptId();
 							wm.AgentName = MarvinSemAnnotator.MetaMapName;
@@ -175,6 +178,9 @@ public class MetaMap {
 							wm.Location = MarvinSemAnnotator.Location;
 							wm.EnvironmentDesc = MarvinSemAnnotator.Environment;
 							wm.Description = mapEv.getSemanticTypes().get(0);
+							DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+							Date date = new Date();
+							wm.dateTime = dateFormat.format(date);
 							for(int l = 0; l<UMLSSemTypes.size();l++)
 							{
 								if(UMLSSemTypes.get(l).shortName.equals(wm.Description))

@@ -1,6 +1,9 @@
 package WordNet;
 
 import java.io.FileInputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 
 import Main.MarvinSemAnnotator;
@@ -52,7 +55,7 @@ public class Wordnet {
 				WordMeaningOutputElement o = new WordMeaningOutputElement();
 				o.Description = senses[i].getGloss();
 				o.appearingWord = word;
-				o.Source = "WordNet";
+				o.AnnotatorSystem = "WordNet";
 				o.id = senses[i].getKey() + "";
 				o.startAt = start;
 				o.endAt = end;
@@ -62,6 +65,9 @@ public class Wordnet {
 				o.AgentVersion = MarvinSemAnnotator.WordNetVersion;
 				o.Location = MarvinSemAnnotator.Location;
 				o.EnvironmentDesc = MarvinSemAnnotator.Environment;
+				DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+				Date date = new Date();
+				o.dateTime = dateFormat.format(date);
 				sences.add(o);
 
 			}
