@@ -53,6 +53,10 @@ public void Annotate(String valueToParse){
 
 ##Methodology
 
+Methodology and technical solutions used in Marvin are explained in the following report: http://arxiv.org/ftp/arxiv/papers/1602/1602.00515.pdf
+
+
+
 ##Reference
 
 If you used Marvin, please cite:
