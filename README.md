@@ -53,6 +53,12 @@ public void Annotate(String valueToParse){
 
 ##Methodology
 
+##Reference
+
+If you used Marvin, please cite:
+ 
+* Marvin: Semantic annotation using multiple knowledge sources, Nikola Milosevic, 2016, arXiv preprint arXiv:1602.00515 (http://arxiv.org/ftp/arxiv/papers/1602/1602.00515.pdf)
+
 
 ##Credits
 
