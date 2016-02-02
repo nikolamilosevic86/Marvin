@@ -3,15 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Marvin - Semantic text annotation tool</title>
+    <title>Marvin by nikolamilosevic86</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<meta name="description" content="Marvin is a semantic text annotation tool that uses various external sources to annotate imputed text (Wordnet, DBPedia, MetaMap). Marvin text annotator can be also used as standalone tool or as a java library">
-    <meta name="keywords" content="Marvin, Text annotation, text mining, data mining, NLP, natural language processing, linked data, semantic web, metamap, dbpedia, wordnet">
-	<meta name="author" content="Nikola Milosevic">
-	<!--[if lt IE 9]>
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
@@ -32,13 +29,13 @@
       </header>
       <section>
         <h1>
-<a id="welcome-to-marvin---semantic-text-annotator" class="anchor" href="#welcome-to-marvin---semantic-text-annotator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to Marvin - Semantic text annotator</h1>
+<a id="welcome-to-marvin---semantic-text-annotator" class="anchor" href="#welcome-to-marvin---semantic-text-annotator" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome to Marvin - Semantic text annotator</h1>
 
-<p>Marvin is a semantic text annotation tool that uses various external sources to annotate imputed text. Marvin text annotator can be also used as a java library. Marvin currently supports tagging using Wordnet,Metamap (UMLS tagging, useful in biomedicine) and DBPedia (linked data version of Wikipedia). So our small Marvin semantic annotator already has a lot of knowledge, which will make anyone probably depressed and therefore we gave him a name with reference to Hitchhikers guide to the Galaxy depressed robot. 
+<p>Marvin is a semantic text annotation tool that uses various external sources to annotate imputed text. Marvin text annotator can be also used as a java library. Marvin currently supports tagging using Wordnet and DBPedia (linked data version of Wikipedia). So our small Marvin semantic annotator already has a lot of knowledge, which will make anyone probably depressed and therefore we gave him a name with reference to Hitchhikers guide to the Galaxy depressed robot. 
 <img src="http://lawrencerspencer.com/wp-content/uploads/2012/02/MARVIN-THE-ROBOT.jpg" alt="Marvin, semantic text annotator"></p>
 
 <h2>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
 <p>Marvin semantic text annotatior is a java program that can be also used as a java library for other application. This means it is an .jar file, which contains all the resources inside it. However, for use of Wordnet, Wordnet has to be installed from <a href="https://wordnet.princeton.edu/wordnet/download/current-version/">https://wordnet.princeton.edu/wordnet/download/current-version/</a></p>
 
@@ -46,15 +43,14 @@
 
 <pre><code>&lt;param name="dictionary_path" value="C:\Program Files (x86)\WordNet\2.1\dict"/&gt;
 </code></pre>
-<p>has to be changed with the correct path within the machine where Wordnet is installed. There are no other requirements for the installation.</p>
-<p>Also, it is necessary to modify settings,cfg file, where you can configure which external resources you would like to use (DBPedia, MetaMap or WordNet) and where they are (DBPedia SPQRQL Interface and MetaMap host and port).
 
-<p>It is higly advisable to use your own (local) installation of DBPedia, WordNet and MetaMap. Public installation usually have certain limit, which could cause problems during the tagging process</p>
+<p>has to be changed with the correct path within the machine where Wordnet is installed. There are no other requirements for the installation.</p>
+
 <h2>
-<a id="running-marvin-semantic-text-annotator" class="anchor" href="#running-marvin-semantic-text-annotator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running Marvin semantic text annotator</h2>
+<a id="running-marvin-semantic-text-annotator" class="anchor" href="#running-marvin-semantic-text-annotator" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running Marvin semantic text annotator</h2>
 
 <h3>
-<a id="running-from-the-command-line" class="anchor" href="#running-from-the-command-line" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running from the command line</h3>
+<a id="running-from-the-command-line" class="anchor" href="#running-from-the-command-line" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running from the command line</h3>
 
 <p>In order to run Marvin semantic annotator you can type in command line</p>
 
@@ -62,21 +58,12 @@
 </code></pre>
 
 <h3>
-<a id="running-marvin-semantic-text-annotator-as-a-library" class="anchor" href="#running-marvin-semantic-text-annotator-as-a-library" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running Marvin semantic text annotator as a library</h3>
+<a id="running-marvin-semantic-text-annotator-as-a-library" class="anchor" href="#running-marvin-semantic-text-annotator-as-a-library" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running Marvin semantic text annotator as a library</h3>
 
 <p>In order to run Marvin semantic text annotator as a library, you need to also to install WordNet on a used machine and then include the Marvin.jar file into your Java project. </p>
 
-<p>The library contains methods that would query DBPedia and Wordnet and both method return a LinkedList of objects called Word</p>
-<pre><code>
-	public class Word {
-	public LinkedList<WordMeaningOutputElement> wordmeanings = new LinkedList<WordMeaningOutputElement>();
-	public String word;
-	public int starting;
-	public int ending;
+<p>The library contains methods that would query DBPedia and Wordnet and both method return a LinkedList of objects called WordMeaningOutputElement</p>
 
-}
-</code></pre>
-<p>Word class contains a list of WordMeaningOutputElement, which definition is:</p>
 <pre><code>public class WordMeaningOutputElement {
     public String appearingWord; // what is the word in text
     public String Description; //Definition in Wordnet or abstract from DBPedia
@@ -89,27 +76,33 @@
 </code></pre>
 
 <h2>
-<a id="roadmap" class="anchor" href="#roadmap" aria-hidden="true"><span class="octicon octicon-link"></span></a>Roadmap</h2>
+<a id="roadmap" class="anchor" href="#roadmap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Roadmap</h2>
 
 <p>Roadmap of project includes addition of new external sources for semantic tagging. Currently the idea is to include the following:</p>
 
 <ul>
+<li>Metamap (UMLS tagging, useful in biomedicine)</li>
 <li>Unit ontology</li>
 <li>Possibly other ontologies</li>
 </ul>
+
 <h2>
-<a id="usecases" class="anchor" href="#usecases" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use cases</h2>
-<p>
-Marvin text annotator is a good tool for various text mining and natural language processing aided systems of textual annotation. It is able to annotate a given text and link it to the knowledge collected in external large knowledge sources such as DBPedia, Wordnet and possibly others. 
-</p>
+<a id="reference" class="anchor" href="#reference" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Reference</h2>
+
+<p>If you used Marvin, please cite:</p>
+
+<ul>
+<li>Marvin: Semantic annotation using multiple knowledge sources, Nikola Milosevic, 2016, arXiv preprint arXiv:1602.00515 (<a href="http://arxiv.org/ftp/arxiv/papers/1602/1602.00515.pdf">http://arxiv.org/ftp/arxiv/papers/1602/1602.00515.pdf</a>)</li>
+</ul>
+
 <h2>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h2>
+<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h2>
 
 <p>This project was created as a part of Nikola Milosevic's (<a href="https://github.com/nikolamilosevic86" class="user-mention">@nikolamilosevic86</a>) PhD project at the University of Manchester, supervised by dr Goran Nenadic (Univerisity of Manchester), Cassie Gregson (AstraZeneca) and Robert Hernandez (AstraZeneca).
 More information about Nikola you can find at his <a href="http://inspiratron.org">web page</a> or you may follow him on <a href="https://twitter.com/dreadknight011">twitter</a></p>
 
 <h2>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h2>
+<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h2>
 
 <p>Having trouble with this project? Contact <a href="mailto:nikola.milosevic@manchester.ac.uk">nikola.milosevic@manchester.ac.uk</a> and we’ll help you sort it out.</p>
       </section>
