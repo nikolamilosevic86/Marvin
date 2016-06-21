@@ -119,7 +119,7 @@ public class MetaMap {
 		term = term.trim();
 		term = term.replace("\n", "");
 		//normalizing input for just string that are processable by MetaMap
-		String patternString = "[a-zA-Z0-9 +-=~\\/()\\[\\]@\"\'.%£^#&\\*{};:]*";
+		String patternString = "[a-zA-Z0-9 +-=~\\/()\\[\\]@\"\'.%^#&\\*{};:]*";
 		Pattern pattern = Pattern.compile(patternString);
 		Matcher matcher = pattern.matcher(term);
 		String sa = "";
