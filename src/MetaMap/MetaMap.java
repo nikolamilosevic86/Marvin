@@ -114,12 +114,14 @@ public class MetaMap {
 		// Certain characters may cause MetaMap to throw an exception;
 		// filter terms before passing to mm.
 		term = term.replaceAll("'", "");
+		term = term.replaceAll("^ - ", "");
 		term = term.replaceAll("\"", "");
 		term = term.replaceAll("\\?", " ");
 		term = term.trim();
 		term = term.replace("\n", "");
+		term = term.replace("&", " and ");
 		//normalizing input for just string that are processable by MetaMap
-		String patternString = "[a-zA-Z0-9 +-=~\\/()\\[\\]@\"\'.%£^#&\\*{};:]*";
+		String patternString = "[a-zA-Z0-9 +-=~\\/()\\[\\]@\"\'.%^#&\\*{};:]*";
 		Pattern pattern = Pattern.compile(patternString);
 		Matcher matcher = pattern.matcher(term);
 		String sa = "";

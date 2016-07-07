@@ -64,14 +64,15 @@ public class MarvinSemAnnotator {
 	public MarvinSemAnnotator() {
 		try {
 
-			BufferedReader br = new BufferedReader(new FileReader(
-					"settings.cfg"));
+			BufferedReader br = new BufferedReader(new FileReader("settings.cfg"));
 			// StringBuilder sb = new StringBuilder();
 			String line = br.readLine();
-
-			while (line != null) {
+			System.out.println("settings.cfg setting:");
+			System.out.println(line);
+			
+			while (line != null && line != "") {
 				KeyValue kv = new KeyValue();
-				String[] parts = line.split(";");
+				String[] parts = line.split(";");			  
 				kv.key = parts[0];
 				kv.value = parts[1];
 				if (kv.key.equals("use_dbpedia") && kv.value.equals("true")) {
