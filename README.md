@@ -2,7 +2,7 @@
 ## Abstract
 Marvin is a semantic text annotation tool that uses various external sources to annotate inputed text. Marvin text annotator can be also used as a java library
 
-##Installation
+## Installation
 
 Marvin semantic text annotatior is a java program that can be also used as a java library for other application. This means it is an .jar file, which contains all the resources inside it. However, for use of Wordnet, Wordnet has to be installed from https://wordnet.princeton.edu/wordnet/download/current-version/
 
@@ -16,13 +16,13 @@ Before running, you will also need to set the configuration of what resuources y
 
 There are no other requirements for the installation.
 
-##Running Marvin semantic text annotator
+## Running Marvin semantic text annotator
 
 In order to run Marvin semantic annotator you can type in command line 
 
 ```java -jar Marvin.jar "Sentence to be semantically annotated."```
 
-##Running Marvin as a library
+## Running Marvin as a library
 
 How to run marvin as a library would be best described in a code snippet bellow. You need just to create object of MarvinSemAnnotator and invoke method "annotate" with the text to be annotated.
 
@@ -51,20 +51,20 @@ public void Annotate(String valueToParse){
 }
 ```
 
-##Methodology
+## Methodology
 
 Methodology and technical solutions used in Marvin are explained in the following report: http://arxiv.org/ftp/arxiv/papers/1602/1602.00515.pdf
 
 
 
-##Reference
+## Reference
 
 If you used Marvin, please cite:
  
 * Marvin: Semantic annotation using multiple knowledge sources, Nikola Milosevic, 2016, arXiv preprint arXiv:1602.00515 (http://arxiv.org/ftp/arxiv/papers/1602/1602.00515.pdf)
 
 
-##Credits
+## Credits
 
 Developed by Nikola Milosevic - nikola.milosevic[at nospam] manchester.ac.uk
 
